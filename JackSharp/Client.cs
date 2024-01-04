@@ -96,15 +96,26 @@ namespace JackSharp
 		/// </summary>
 		public event EventHandler<EventArgs> Shutdown;
 
-		object _jackErrorFunction;
-
-		object _jackInfoFunction;
-
 		/// <summary>
 		/// Occurs on xrun.
 		/// </summary>
 		public event EventHandler<XrunEventArgs> Xrun;
 
+		Callbacks.JackXRunCallback _jackXrunCallback;
+
+		/// <summary>
+		/// Occurs on jack error messages.
+		/// </summary>
+		public event EventHandler<ErrorEventArgs> Error;
+
+		Callbacks.JackErrorCallback _jackErrorFunction;
+
+		/// <summary>
+		/// Occurs on jack info messages.
+		/// </summary>
+		public event EventHandler<InfoEventArgs> Info;
+
+		Callbacks.JackInfoCallback _jackInfoFunction;
 		public event EventHandler<NotAvailableEventArgs> NotAvailable;
 
 		protected void InvokeNotAvaible (string eventName)
@@ -114,15 +125,13 @@ namespace JackSharp
 			}
 		}
 
-		Callbacks.JackXRunCallback _jackXrunCallback;
-
 		void SetUpBaseCallbacks ()
 		{
 			_bufferSizeCallback = OnBufferSizeChange;
 			_sampleRateCallback = OnSampleRateChange;
 			_shutdownCallback = OnShutdown;
-			//	_jackErrorFunction = OnJackError;
-			//	_jackInfoFunction = OnJackInfo;
+			_jackErrorFunction = OnJackError;
+			_jackInfoFunction = OnJackInfo;
 			_jackXrunCallback = OnJackXrun;
 		}
 
@@ -171,6 +180,20 @@ namespace JackSharp
 				Xrun (this, new XrunEventArgs (xrunDelay));
 			}
 			return 0;
+		}
+
+		unsafe void OnJackError (string err)
+		{
+			if (err != null) {
+				Error (this, new ErrorEventArgs (err));
+			}
+		}
+
+		unsafe void OnJackInfo (string info)
+		{
+			if (info != null) {
+				Info (this, new InfoEventArgs (info));
+			}
 		}
 
 		internal abstract bool Open (bool startServer);

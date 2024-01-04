@@ -68,9 +68,9 @@ namespace JackSharp.ApiWrapper
 		public static extern unsafe int SetBufferSize (UnsafeStructs.jack_client_t* client, uint nframes);
 
 		[DllImport (Constants.JACK_LIB_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "jack_set_error_function")]
-		public static extern void SetErrorFunction (StringFromIntPtr.FromIntPtrDelegate func);
+		public static extern void SetErrorFunction (Callbacks.JackErrorCallback func);
 
 		[DllImport (Constants.JACK_LIB_NAME, CallingConvention = CallingConvention.Cdecl, EntryPoint = "jack_set_info_function")]
-		public static extern void SetInfoFunction (StringFromIntPtr.FromIntPtrDelegate func);
+		public static extern void SetInfoFunction (Callbacks.JackInfoCallback func);
 	}
 }

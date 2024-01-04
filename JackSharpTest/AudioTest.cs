@@ -25,6 +25,7 @@ using NUnit.Framework;
 using JackSharp;
 using System.Threading;
 using JackSharpTest.Dummies;
+using Assert = NUnit.Framework.Legacy.ClassicAssert;
 
 namespace JackSharpTest
 {

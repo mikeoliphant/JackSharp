@@ -23,6 +23,7 @@
 using System.Linq;
 using JackSharp;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Legacy.ClassicAssert;
 
 namespace JackSharpTest
 {

@@ -25,6 +25,7 @@ using JackSharp;
 using JackSharpTest.Dummies;
 using NUnit.Framework;
 using JackSharp.Ports;
+using Assert = NUnit.Framework.Legacy.ClassicAssert;
 
 namespace JackSharpTest
 {

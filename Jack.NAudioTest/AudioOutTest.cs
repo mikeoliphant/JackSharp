@@ -29,6 +29,7 @@ using Jack.NAudio;
 using Jack.NAudioTest.WaveIntegration;
 using NAudio.Wave;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Legacy.ClassicAssert;
 
 namespace Jack.NAudioTest
 {
