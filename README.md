@@ -1,3 +1,24 @@
+# JackSharpCore
+
+This is a .NET Core wrapper around the native Jack Audio interface library.
+
+The original repository is here: https://github.com/residuum/JackSharp
+
+This fork is based off another fork, which updated it to .NET Core: https://github.com/h3ll5ur7er/JackSharp
+
+This fork uses NativeLibrary to do a better job of finding the correct native dll cross-platform without depending on what kind of system it was built on.
+
+# Why .NET Core and not .NET Standard
+
+.NET Standard, unfortunately, does not provide the NativeLibrary interface for resolving native dlls.
+
+# NuGet Package
+
+NuGet package is here: https://www.nuget.org/packages/JackSharpCore
+
+# Original README follows:
+
+```
 **Due to Github's determination to be the "world’s leading AI-powered developer platform" I will move my projects to [Codeberg](https://codeberg.org/Residuum)**
 
 # Jack-Sharp
@@ -47,3 +68,4 @@ Running unit tests can be a bit tricky, as some unit tests require an already ru
 The following test class from the project `JackSharpTest` must be run without Jack:
 
 * `ServerStartTest`
+```
