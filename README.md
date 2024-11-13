@@ -16,6 +16,14 @@ This fork uses NativeLibrary to do a better job of finding the correct native dl
 
 NuGet package is here: https://www.nuget.org/packages/JackSharpCore
 
+.
+
+.
+
+.
+
+.
+
 # Original README follows:
 
 ```
