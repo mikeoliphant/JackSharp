@@ -8,7 +8,7 @@ This fork is based off another fork, which updated it to .NET Core: https://gith
 
 This fork uses NativeLibrary to do a better job of finding the correct native dll cross-platform without depending on what kind of system it was built on.
 
-# Why .NET Core and not .NET Standard
+# Why .NET Core and not .NET Standard?
 
 .NET Standard, unfortunately, does not provide the NativeLibrary interface for resolving native dlls.
 
