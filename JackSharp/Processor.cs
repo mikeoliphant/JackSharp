@@ -23,10 +23,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using JackSharp.Ports;
 using JackSharp.ApiWrapper;
 using JackSharp.Pointers;
 using JackSharp.Processing;
+using System.Reflection;
 
 namespace JackSharp
 {
@@ -41,10 +43,28 @@ namespace JackSharp
 		MidiOutPort[] _midiOutPorts;
 		readonly bool _autoconnect;
 
-		/// <summary>
-		/// Delegates to be called on the process callback of Jack. Multiple Actions can be added.
-		/// </summary>
-		public Action<ProcessBuffer> ProcessFunc { get; set; }
+		static Processor()
+		{
+			NativeLibrary.SetDllImportResolver(Assembly.GetExecutingAssembly(), DllImportResolver);
+        }
+
+        private static IntPtr DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+        {
+            if (libraryName == "libjack")
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    return NativeLibrary.Load("libjack64", assembly, searchPath);
+                }
+            }
+
+            // Otherwise, fallback to default import resolver.
+            return IntPtr.Zero;
+        }
+        /// <summary>
+        /// Delegates to be called on the process callback of Jack. Multiple Actions can be added.
+        /// </summary>
+        public Action<ProcessBuffer> ProcessFunc { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="JackSharp.Processor"/> class.
