@@ -1,15 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<PackageId>JackSharpCore</PackageId>
-		<Version>0.1.1</Version>
+		<Version>0.1.2</Version>
 		<TargetFramework>net8.0</TargetFramework>
 		<RootNamespace>JackSharp</RootNamespace>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<OutputType>library</OutputType>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Description>C# Wrapper around libjack API.
-		
-JACK Audio Connection Kit (or JACK; a recursive acronym) is a professional sound server daemon that provides real-time, low-latency connections for both audio and MIDI data between applications that implement its API.</Description>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<Description>.NET Core bindings for Jack Audio</Description>
 	</PropertyGroup>
 </Project>
